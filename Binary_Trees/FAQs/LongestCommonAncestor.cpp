@@ -71,3 +71,30 @@ public:
         return findNode(root, commonAncestorVal);
     }
 };
+
+
+// Optimized approach: 
+//Recursively check if the current node is either p or q,
+// if yes return the current node. If not, check for p and q in left and right subtrees. 
+// If both left and right return non-null values, then the current node is the LCA. 
+// If only one of them returns a non-null value, return that value.
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (root == NULL || root == p || root == q) {
+            return root;
+        }
+        
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        
+        if (left == NULL) {
+            return right;
+        } else if (right == NULL) {
+            return left;
+        } else { 
+            return root;
+        }
+    }
+};
