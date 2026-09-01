@@ -1,7 +1,8 @@
 //Longest subarray with sum K
 
-#include <iostream>
-#include <unordered_map>
+#include<unordered_map>
+#include<algorithm>
+#include<vector>
 using namespace std;
 
 class Solution {

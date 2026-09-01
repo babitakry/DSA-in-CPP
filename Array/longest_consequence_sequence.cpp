@@ -1,6 +1,6 @@
 //Longest Consecutive Sequence in an Array
 
-#include <iostream>
+#include<vector>
 #include <unordered_set>
 using namespace std;    
 
