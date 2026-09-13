@@ -1,8 +1,29 @@
 #include<iostream>
 #include<map>
 #include<set>
-using namespace std;    
+using namespace std;   
 
+
+// Optimal Approach
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root == NULL || root == p || root == q)
+            return root;
+        
+        if(p->data < root->data && q->data < root->data){
+            return lowestCommonAncestor(root->left, p, q);
+        }
+        
+        if(p->data > root->data && q->data > root->data){
+            return lowestCommonAncestor(root->right, p, q);
+        }
+
+        return root;
+    }
+};
+
+// Brute Force Approach
 struct TreeNode {
     int data;
     TreeNode *left;
