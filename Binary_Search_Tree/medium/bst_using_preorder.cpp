@@ -47,3 +47,29 @@ public:
         return bstFromPreorderInorder(preorder, inorder);
     }
 };
+
+
+// Optimal Approach : Using Preorder Traversal Only
+class Solution {
+    TreeNode* build(vector<int> &preorder, int &i, int bound){
+        int n = preorder.size();
+
+        if(i == n || preorder[i] > bound){
+            return NULL;
+        }
+
+        TreeNode* root = new TreeNode(preorder[i]);
+        i++;
+
+        root->left = build(preorder, i, root->data);
+        root->right = build(preorder, i, bound);
+
+        return root;
+    }
+
+public:
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        int i = 0;
+        return build(preorder, i, INT_MAX);
+    }
+};
